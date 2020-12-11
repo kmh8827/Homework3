@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Random Password Generator</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <script type="text/javascript">
+
+        var letterP = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var numberP = [1,2,3,4,5,6,7,8,9];
+        var specC = ["!","@","#","$","%","^","&","*","(",")"];
+
+        function GenerateP() {
+            var includeL = prompt("Would you like to include lower-case letters");
+            var includeU = prompt("Would you like to include upper-case letters");
+            var includeN = prompt("Would you like to include numbers");
+            var includeS = prompt("Would you like to include special characters");
+            var pLength = parseInt(prompt("How long do you want your password to be?"));
+            console.log(pLength);
+        };
+        
+
+
+
+
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Password Generator</h1>
+        <main class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label" style="color:olive; font-size: 24px;"><b>Generate a Password</b></label>
+                        <hr />
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="text-align: center;">Your new password</textarea>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="d-grid gap-2 mt-3 col-6 mx-auto">
+                        <button onclick="GenerateP()" class="btn btn-primary" type="button">Generate</button>
+                    </div>
+                </div>
+            </div>
+         
+        </main>
+    </body>
+</html>
