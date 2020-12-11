@@ -12,25 +12,73 @@
         var letterP = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
         var numberP = [1,2,3,4,5,6,7,8,9];
         var specC = ["!","@","#","$","%","^","&","*","(",")"];
+        var whatUse = [];
+        var randomPass = [];
+       
+        function randomAssign(useThis) {
+            var position = Math.floor(Math.random() * useThis.length);
+            return useThis[position];
+        };
 
         function GenerateP() {
-            var includeL = prompt("Would you like to include lower-case letters");
-            var includeU = prompt("Would you like to include upper-case letters");
-            var includeN = prompt("Would you like to include numbers");
-            var includeS = prompt("Would you like to include special characters");
+            var includeL = prompt("Would you like to include lower-case letters y/n");
+
+            if (includeL == "y")
+
+            {
+                whatUse.push("Lower");
+            }
+
+            var includeU = prompt("Would you like to include upper-case letters y/n");
+
+            if (includeL == "y")
+            {
+                whatUse.push("Upper");
+            }
+
+            var includeN = prompt("Would you like to include numbers y/n");
+
+            if (includeL == "y")
+            {
+                whatUse.push("Number");
+            }
+
+            var includeS = prompt("Would you like to include special characters y/n");
+
+            if (includeL == "y")
+            {
+                whatUse.push("Special");
+            }
+
             var pLength = parseInt(prompt("How long do you want your password to be?"));
-            console.log(pLength);
+
+            for (var i = 0;i < pLength; i++) {
+                var type = Math.floor(Math.random() * whatUse.length);
+
+                if (whatUse[type] == "Lower") {
+                    var randomCharacter = randomAssign(letterP);
+                    randomPass.push(randomCharacter);
+                    console.log(randomCharacter);
+                }
+                else if (whatUse[type] == "Upper") {
+                    var randomCharacter = randomAssign(letterP);
+                    randomCharacter = randomCharacter.toUpperCase();
+                    randomPass.push(randomCharacter);
+                    console.log(randomCharacter);
+                }
+                else if (whatUse[type] == "Number") {
+                    var randomCharacter = randomAssign(numberP);
+                    randomPass.push(randomCharacter);
+                    console.log(randomCharacter);
+                }
+                else if (whatUse[type] == "Special") {
+                    var randomCharacter = randomAssign(specC);
+                    randomPass.push(randomCharacter);
+                    console.log(randomCharacter);
+                }          
+            }
+          
         };
-        
-
-
-
-
-
-
-
-
-
         </script>
     </head>
     <body>
