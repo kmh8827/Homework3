@@ -25,7 +25,7 @@
             var randomPass = [];
             var newPass = "";
 
-            var includeL = prompt("Would you like to include lower-case letters y/n");
+            var includeL = prompt("Would you like to include lower-case letters y for yes");
 
             if (includeL === "y")
 
@@ -34,7 +34,7 @@
                 console.log(whatUse.length);
             }
 
-            var includeU = prompt("Would you like to include upper-case letters y/n");
+            var includeU = prompt("Would you like to include upper-case letters y for yes");
 
             if (includeU === "y")
             {
@@ -42,7 +42,7 @@
                 console.log(whatUse.length);
             }
 
-            var includeN = prompt("Would you like to include numbers y/n");
+            var includeN = prompt("Would you like to include numbers y for yes");
 
             if (includeN === "y")
             {
@@ -50,7 +50,7 @@
                 console.log(whatUse.length);
             }
 
-            var includeS = prompt("Would you like to include special characters y/n");
+            var includeS = prompt("Would you like to include special characters y for yes");
 
             if (includeS === "y")
             {
@@ -58,8 +58,13 @@
                 console.log(whatUse.length);
             }
 
-            var pLength = parseInt(prompt("How long do you want your password to be?"));
-
+            var pLength = parseInt(prompt("How long do you want your password to be? (must be at least 8 but no more than 128)"));
+            parseInt(pLength);
+            while (pLength <= 8 || pLength >= 128) {
+                pLength = prompt("this is not an acceptable password length, please try again. (must be at least 8 but no more than 128)");
+                parseInt(pLength);
+            }
+            
             for (var i = 0;i < pLength; i++) {
                 var type = Math.floor(Math.random() * whatUse.length);
                 console.log(whatUse.length);
