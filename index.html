@@ -12,26 +12,30 @@
         var letterP = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
         var numberP = [1,2,3,4,5,6,7,8,9];
         var specC = ["!","@","#","$","%","^","&","*","(",")"];
+        var chosenUse = "";
       
-       
+    //  Determines which arrays to include in creation of the password
         function randomAssign(useThis) {
             var position = Math.floor(Math.random() * useThis.length);
             return useThis[position];
         };
 
+
+    //  Function that generates the users random password
         function GenerateP() {
 
             var whatUse = [];
             var randomPass = [];
             var newPass = "";
-
+    //  Series of propmts to ask what users want to use in password creation
+    //
+            do {
             var includeL = prompt("Would you like to include lower-case letters y for yes");
 
             if (includeL === "y")
 
             {
                 whatUse.push("Lower");
-                console.log(whatUse.length);
             }
 
             var includeU = prompt("Would you like to include upper-case letters y for yes");
@@ -39,7 +43,6 @@
             if (includeU === "y")
             {
                 whatUse.push("Upper");
-                console.log(whatUse.length);
             }
 
             var includeN = prompt("Would you like to include numbers y for yes");
@@ -47,7 +50,6 @@
             if (includeN === "y")
             {
                 whatUse.push("Number");
-                console.log(whatUse.length);
             }
 
             var includeS = prompt("Would you like to include special characters y for yes");
@@ -55,37 +57,44 @@
             if (includeS === "y")
             {
                 whatUse.push("Special");
-                console.log(whatUse.length);
             }
-
+    //
+            alert("You have chose to use " + JSON.stringify(whatUse));
+            if (whatUse.length < 1) {
+                alert("You need to select at least one type of unit for your password!!!");
+            }
+        }
+        while (whatUse.length < 1);
+    //  Checks to ensure the password length is appropriate
             var pLength = parseInt(prompt("How long do you want your password to be? (must be at least 8 but no more than 128)"));
             parseInt(pLength);
             while (pLength <= 8 || pLength >= 128) {
                 pLength = prompt("this is not an acceptable password length, please try again. (must be at least 8 but no more than 128)");
                 parseInt(pLength);
             }
-            
+    //
+    //Generates Password
             for (var i = 0;i < pLength; i++) {
                 var type = Math.floor(Math.random() * whatUse.length);
                 console.log(whatUse.length);
 
-                if (whatUse[type] == "Lower") {
+                if (whatUse[type] === "Lower") {
                     var randomCharacter = randomAssign(letterP);
                     randomPass.push(randomCharacter);
                     console.log(randomCharacter);
                 }
-                else if (whatUse[type] == "Upper") {
+                else if (whatUse[type] === "Upper") {
                     var randomCharacter = randomAssign(letterP);
                     randomCharacter = randomCharacter.toUpperCase();
                     randomPass.push(randomCharacter);
                     console.log(randomCharacter);
                 }
-                else if (whatUse[type] == "Number") {
+                else if (whatUse[type] === "Number") {
                     var randomCharacter = randomAssign(numberP);
                     randomPass.push(randomCharacter);
                     console.log(randomCharacter);
                 }
-                else if (whatUse[type] == "Special") {
+                else if (whatUse[type] === "Special") {
                     var randomCharacter = randomAssign(specC);
                     randomPass.push(randomCharacter);
                     console.log(randomCharacter);
@@ -99,12 +108,13 @@
             alert("Your new password is " + newPass);
           
         };
+    //
         </script>
     </head>
     <body>
         <h1 style="text-align: center;">Password Generator</h1>
         <main class="container">
-            <div class="row">
+            <section class="row">
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label" style="color:olive; font-size: 24px;"><b>Generate a Password</b></label>
@@ -113,14 +123,14 @@
                         <hr />
                     </div>
                 </div>
-            </div>
-            <div class="row">
+            </section>
+            <section class="row">
                 <div class="col-6">
                     <div class="d-grid gap-2 mt-3 col-6 mx-auto">
                         <button onclick="GenerateP()" class="btn btn-primary" type="button">Generate</button>
                     </div>
                 </div>
-            </div>
+            </section>
          
         </main>
     </body>
